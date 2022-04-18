@@ -1,12 +1,14 @@
-<label>
-    <h5>
-        Müşteriler
-    </h5>
-</label>
-<table>
-    <tr>
-        <td>
-            Müşteri bilgileri burada olacak
-        </td>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Müşteri ID</th>
+            <th>Kullanıcı ID</th>
+            <th>Şirket Adı</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let customer of customers">
+        <td>{{customer.customerId}}</td>
+        <td>{{customer.userId}}</td>
+        <td>{{customer.companyName}}</td>
     </tr>
 </table>
