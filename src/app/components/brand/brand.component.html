@@ -1,11 +1,9 @@
-<label>
+<div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
+    <span class="visually-hidden">Markalar Loading...</span>
+  </div>
+  <label *ngIf="dataLoaded==true">
     <h5>Markalar</h5>
-</label>
-<ul class="list-group">
-    <li class="list-group-item">Marka1</li>
-    <li class="list-group-item">Marka2</li>
-    <li class="list-group-item">Marka3</li>
-    <li class="list-group-item">Marka4</li>
-    <li class="list-group-item">Marka5</li>
-   
-</ul>
+  </label>
+  <ul *ngFor="let brand of brands" class="list-group">
+    <li class="list-group-item">{{brand.brandName}}</li>
+  </ul>
