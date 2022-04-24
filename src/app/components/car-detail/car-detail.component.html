@@ -1,23 +1,42 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-secondary" role="status">
-    <span class="visually-hidden">Loading...</span>
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-secondary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
 </div>
-<table class="table">
-    <thead *ngIf="dataLoaded==true">
-        <tr>
-            <th>Id</th>
-            <th>Marka</th>
-            <th>Model</th>
-            <th>Renk</th>
-            <th>Üretim Yılı</th>
-            <th>Günlük Ücreti</th>
-        </tr>
-    </thead>
-    <tr *ngFor="let carDetail of carDetails">
-        <td>{{carDetail.id}}</td>
-        <td>{{carDetail.brandName}}</td>
-        <td>{{carDetail.description}}</td>
-        <td>{{carDetail.colorName}}</td>
-        <td>{{carDetail.modelYear}}</td>
-        <td>{{carDetail.dailyPrice}}</td>
-    </tr>
-</table>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let carDetail of carDetails" class="col">
+    <div class="card">
+      <img
+        [src]="setCurrentCartImageSrc()"
+        [class]="getCurrentCarClass(carDetail)"
+        [alt]="setCurrentCarImageAlt()"
+        height="150px"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ carDetail.carName }}</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <b style="float: left; width: 50%; text-align: left">Marka</b>
+            {{ carDetail.brandName }}
+          </li>
+          <li class="list-group-item">
+            <b style="float: left; width: 50%; text-align: left">Renk</b>
+            {{ carDetail.colorName }}
+          </li>
+          <li class="list-group-item">
+            <b style="float: left; width: 50%; text-align: left">Model</b>
+            {{ carDetail.modelYear }}
+          </li>
+          <h5 align="center">{{ carDetail.dailyPrice }} ₺</h5>
+        </ul>
+
+        <div class="d-grid gap-2 d-md-block">
+          <a style="float: left; width: 49%; text-align: center" routerLink="/cars/detail/{{carDetail.id}}" class="btn btn-dark">İncele</a>
+          <a style="float: right; width: 49%; text-align: center" href="#" class="btn btn-warning">Kirala</a>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
