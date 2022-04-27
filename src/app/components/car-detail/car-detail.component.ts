@@ -11,9 +11,13 @@ import { CarDetailService } from 'src/app/services/car-detail.service';
 export class CarDetailComponent implements OnInit {
   carDetails: CarDetail[] = [];
   dataLoaded = false;
-  currentCar?:CarDetail;
+  currentCar : CarDetail;
 
   imgBaseUrl:string="https://localhost:44352/uploads/images/"
+
+  carFilterText="";
+  brandFilterText="";
+  colorFilterText="";
 
   constructor(private carDetailService: CarDetailService,
      private activatedRoute: ActivatedRoute) {}
